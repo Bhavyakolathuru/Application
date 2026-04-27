@@ -1,11 +1,14 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function (Controller, Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+    "test/model/formatter"
+], function (Controller, Filter, FilterOperator,formatter) {
     "use strict";
 
     return Controller.extend("test.controller.View1", {
+        formatter:formatter,
+
 
         onInit: function () {
         },
@@ -64,12 +67,6 @@ if (sMin && sMax) {
             var oBinding = oTable.getBinding("items");
             oBinding.filter(aFilters);
         },
-        formatDate: function (d) {
-            if (!d) return "";
-            var oDate = new Date(d);
-            return oDate.toLocaleDateString(); 
-        }
-
 
     });
 });

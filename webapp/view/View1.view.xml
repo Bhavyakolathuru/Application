@@ -70,6 +70,8 @@
                     <Column><Text text="Required Date"/></Column>
                     <Column><Text text="Ship Country"/></Column>
                     <Column><Text text="Freight"/></Column>
+                    <Column><Text text="Freight Status"/></Column>
+                    <Column><Text text="Delivery Status"/></Column>
                 </columns>
 
                 <items>
@@ -78,10 +80,23 @@
                             <Text text="{OrderID}"/>
                             <Text text="{CustomerID}"/>
                             <Text text="{EmployeeID}"/>
-                            <Text text="{path:'OrderDate', formatter:'.formatDate'}"/>
-                            <Text text="{path:'RequiredDate', formatter:'.formatDate'}"/>
+                            <Text text="{path:'OrderDate', formatter:'.formatter.formatDate'}"/>
+                            <Text text="{path:'RequiredDate', formatter:'.formatter.formatDate'}"/>
                             <Text text="{ShipCountry}"/>
                             <Text text="{Freight}"/>
+                            <ObjectStatus
+    text="{ path:'Freight', formatter: '.formatter.formatFreightText' }"
+    state="{ path:'Freight', formatter: '.formatter.formatFreightState' }"/>
+
+<ObjectStatus
+    text="{
+        parts:['RequiredDate','OrderDate'],
+        formatter: '.formatter.formatDeliveryText'
+    }"
+    state="{
+        parts:['RequiredDate','OrderDate'],
+        formatter: '.formatter.formatDeliveryState'
+    }"/>
                         </cells>
                     </ColumnListItem>
                 </items>
