@@ -63,7 +63,13 @@ if (sMin && sMax) {
             var oTable = this.byId("tableId");
             var oBinding = oTable.getBinding("items");
             oBinding.filter(aFilters);
+        },
+        formatDate: function (d) {
+            if (!d) return "";
+            var oDate = new Date(d);
+            return oDate.toLocaleDateString(); 
         }
+
 
     });
 });
